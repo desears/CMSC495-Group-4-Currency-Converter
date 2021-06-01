@@ -1,1 +1,6 @@
 This repository will house all documents related to and versions of Currency Converter App project by Group 4 of UMGC's CMSC 495 (Summer 2021) course. 
+Project Members: Roy Auh, Ronald Desears, Stephen Snelling
+Instructor: Dr. Hung Dao
+
+The currency converter app project will create a GUI-based app that allows the user to input a value that represents a certain amount of currency to convert it to a different currency.
+The app will take real-time data of currency rates to perform the appropriate conversion and display the results.
