@@ -5,7 +5,8 @@ package currencyapp;
  * Course/Group: UMGC CMSC 495 Group 4
  * Description: This class calls the exchange-rate API to retrieve a JSON string containing the conversion rates
  * for all currencies, and creates Currency objects of the specified top 10 most commonly used currencies.
- * USD is excluded, because it is 1, a rate at which all other currencies are based.
+ * If there is a connectivity problem with the web API, an arraylist of back-up rates is returned.
+ * Those rates are from June 25, 2021.
  */
 
 import org.json.simple.JSONObject;
@@ -42,6 +43,7 @@ public class ExchangeRateWebService {
                 JSONObject object = (JSONObject) jsonParser.parse(s);
                 JSONObject rates = (JSONObject) object.get("conversion_rates");
 
+                currencies.add(new Currency("USD", 1.00));
                 currencies.add(new Currency("EUR", (Double) rates.get("EUR")));
                 currencies.add(new Currency("GBP", (Double) rates.get("GBP")));
                 currencies.add(new Currency("INR", (Double) rates.get("INR")));
@@ -54,15 +56,33 @@ public class ExchangeRateWebService {
                 currencies.add(new Currency("CNY", (Double) rates.get("CNY")));
             }
 
-            // for (Currency c : currencies) { System.out.println(c); }     // for testing
+            // for (Currency c : currencies) { System.out.println(c); }
 
 
         } catch (IOException | ParseException e) {
             JOptionPane.showMessageDialog(null,
                     "Problem encountered retrieving data from the web service",
                     "Connection Problem", JOptionPane.WARNING_MESSAGE);
-            return null;
+            return getBackUpRates();
         }
+
+        return currencies;
+    }
+
+    public static ArrayList<Currency> getBackUpRates() {
+        ArrayList<Currency> currencies = new ArrayList<>();
+
+        currencies.add(new Currency("USD", 1.00));
+        currencies.add(new Currency("EUR", 0.8364));
+        currencies.add(new Currency("GBP", 0.7179));
+        currencies.add(new Currency("INR", 74.1667));
+        currencies.add(new Currency("AUD", 1.3186));
+        currencies.add(new Currency("CAD", 1.2287));
+        currencies.add(new Currency("SGD", 1.3425));
+        currencies.add(new Currency("CHF", 0.9181));
+        currencies.add(new Currency("MYR", 4.1591));
+        currencies.add(new Currency("JPY", 110.8417));
+        currencies.add(new Currency("CNY", 6.4708));
 
         return currencies;
     }
