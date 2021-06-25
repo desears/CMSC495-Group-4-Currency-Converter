@@ -1,3 +1,5 @@
+package currencyapp;
+
 /*
 * Author: Roy Auh
 * Course/Group: UMGC CMSC 495 Group 4
