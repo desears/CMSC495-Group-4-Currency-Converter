@@ -54,9 +54,7 @@ public class ExchangeRateWebService {
                 currencies.add(new Currency("CNY", (Double) rates.get("CNY")));
             }
 
-            for (Currency c : currencies) {
-                System.out.println(c);
-            }
+            // for (Currency c : currencies) { System.out.println(c); }     // for testing
 
 
         } catch (IOException | ParseException e) {
