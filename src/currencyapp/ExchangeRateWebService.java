@@ -13,21 +13,21 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ExchangeRateWebService {
 
     private static final String webUrl = "https://v6.exchangerate-api.com/v6/1dc8c170db97f09405c85b57/latest/USD";
 
 
-    public static ArrayList<Currency> retrieveRates() {
-        ArrayList<Currency> currencies = new ArrayList<>();
+    public static HashMap<String, Currency> retrieveRates() {
+        HashMap<String, Currency> currencies = new HashMap<>();
 
         try {
             URL openURL = new URL(webUrl);
@@ -43,21 +43,18 @@ public class ExchangeRateWebService {
                 JSONObject object = (JSONObject) jsonParser.parse(s);
                 JSONObject rates = (JSONObject) object.get("conversion_rates");
 
-                currencies.add(new Currency("USD", 1.00));
-                currencies.add(new Currency("EUR", (Double) rates.get("EUR")));
-                currencies.add(new Currency("GBP", (Double) rates.get("GBP")));
-                currencies.add(new Currency("INR", (Double) rates.get("INR")));
-                currencies.add(new Currency("AUD", (Double) rates.get("AUD")));
-                currencies.add(new Currency("CAD", (Double) rates.get("CAD")));
-                currencies.add(new Currency("SGD", (Double) rates.get("SGD")));
-                currencies.add(new Currency("CHF", (Double) rates.get("CHF")));
-                currencies.add(new Currency("MYR", (Double) rates.get("MYR")));
-                currencies.add(new Currency("JPY", (Double) rates.get("JPY")));
-                currencies.add(new Currency("CNY", (Double) rates.get("CNY")));
+                currencies.put("US Dollar", new Currency("USD", 1.00));
+                currencies.put("Euro", new Currency("EUR", (Double) rates.get("EUR")));
+                currencies.put("British Pound", new Currency("GBP", (Double) rates.get("GBP")));
+                currencies.put("Indian Rupee", new Currency("INR", (Double) rates.get("INR")));
+                currencies.put("Australian Dollar", new Currency("AUD", (Double) rates.get("AUD")));
+                currencies.put("Canadian Dollar", new Currency("CAD", (Double) rates.get("CAD")));
+                currencies.put("Singapore Dollar", new Currency("SGD", (Double) rates.get("SGD")));
+                currencies.put("Swiss Franc", new Currency("CHF", (Double) rates.get("CHF")));
+                currencies.put("Malaysian Ringgit", new Currency("MYR", (Double) rates.get("MYR")));
+                currencies.put("Japanese Yen", new Currency("JPY", (Double) rates.get("JPY")));
+                currencies.put("Chinese Yuan Renminbi", new Currency("CNY", (Double) rates.get("CNY")));
             }
-
-            // for (Currency c : currencies) { System.out.println(c); }
-
 
         } catch (IOException | ParseException e) {
             JOptionPane.showMessageDialog(null,
@@ -69,20 +66,20 @@ public class ExchangeRateWebService {
         return currencies;
     }
 
-    public static ArrayList<Currency> getBackUpRates() {
-        ArrayList<Currency> currencies = new ArrayList<>();
+    private static HashMap<String, Currency> getBackUpRates() {
+        HashMap<String, Currency> currencies = new HashMap<>();
 
-        currencies.add(new Currency("USD", 1.00));
-        currencies.add(new Currency("EUR", 0.8364));
-        currencies.add(new Currency("GBP", 0.7179));
-        currencies.add(new Currency("INR", 74.1667));
-        currencies.add(new Currency("AUD", 1.3186));
-        currencies.add(new Currency("CAD", 1.2287));
-        currencies.add(new Currency("SGD", 1.3425));
-        currencies.add(new Currency("CHF", 0.9181));
-        currencies.add(new Currency("MYR", 4.1591));
-        currencies.add(new Currency("JPY", 110.8417));
-        currencies.add(new Currency("CNY", 6.4708));
+        currencies.put("US Dollar", new Currency("USD", 1.00));
+        currencies.put("Euro", new Currency("EUR", 0.8364));
+        currencies.put("British Pound", new Currency("GBP", 0.7179));
+        currencies.put("Indian Rupee", new Currency("INR", 74.1667));
+        currencies.put("Australian Dollar", new Currency("AUD", 1.3186));
+        currencies.put("Canadian Dollar", new Currency("CAD", 1.2287));
+        currencies.put("Singapore Dollar", new Currency("SGD", 1.3425));
+        currencies.put("Swiss Franc", new Currency("CHF", 0.9181));
+        currencies.put("Malaysian Ringgit", new Currency("MYR", 4.1591));
+        currencies.put("Japanese Yen", new Currency("JPY", 110.8417));
+        currencies.put("Chinese Yuan Renminbi", new Currency("CNY", 6.4708));
 
         return currencies;
     }
