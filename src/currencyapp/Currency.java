@@ -14,6 +14,10 @@ public class Currency {
         this.name = n;
         this.rate = r;
     }
+    
+    public double getRate() {
+        return rate;
+    }
 
     @Override
     public String toString() {
