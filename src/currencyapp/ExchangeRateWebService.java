@@ -56,7 +56,7 @@ public class ExchangeRateWebService {
                 currencies.put("Chinese Yuan Renminbi", new Currency("CNY", (Double) rates.get("CNY")));
             }
 
-        } catch (IOException | ParseException e) {
+        } catch (IOException | ParseException e) {  // if error, then call back-up rates
             JOptionPane.showMessageDialog(null,
                     "Problem encountered retrieving data from the web service",
                     "Connection Problem", JOptionPane.WARNING_MESSAGE);
@@ -66,6 +66,9 @@ public class ExchangeRateWebService {
         return currencies;
     }
 
+    
+    // method to call when web service is unavailable
+    // this will specify the back-up rates based on rates on June 25, 2021
     private static HashMap<String, Currency> getBackUpRates() {
         HashMap<String, Currency> currencies = new HashMap<>();
 
