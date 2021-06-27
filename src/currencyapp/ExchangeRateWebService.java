@@ -41,8 +41,9 @@ public class ExchangeRateWebService {
 
             while ((s=inReader.readLine()) != null) {
                 JSONObject object = (JSONObject) jsonParser.parse(s);
-                JSONObject rates = (JSONObject) object.get("conversion_rates");
-
+                JSONObject rates = (JSONObject) object.get("conversion_rates");     // only retrieve the rates from the JSON object
+                
+                // get top 11 most commonly used currencies into Currency objects
                 currencies.put("US Dollar", new Currency("USD", 1.00));
                 currencies.put("Euro", new Currency("EUR", (Double) rates.get("EUR")));
                 currencies.put("British Pound", new Currency("GBP", (Double) rates.get("GBP")));
