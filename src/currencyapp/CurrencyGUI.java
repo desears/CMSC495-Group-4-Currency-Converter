@@ -123,7 +123,7 @@ public class CurrencyGUI extends JFrame {
         } catch(NullPointerException e) {
             JOptionPane.showMessageDialog(this, "Make sure to enter an amount first!");
         } catch(NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Entered amount must be a postive "
+            JOptionPane.showMessageDialog(this, "Entered amount must be a positive "
                                                 + "number!");
         }
     } // end method convertAction
