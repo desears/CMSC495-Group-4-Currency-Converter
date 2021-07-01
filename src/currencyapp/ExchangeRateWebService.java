@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class ExchangeRateWebService {
 
-    private static final String webUrl = "https://v6.exchangerate-api.com/v6/1dc8c170db97f09405c85b57/latest/USD";
+    private static final String webUrl = "https://v6.exchangerate-api.com/v6/dadc1537fed255738ca53d0b/latest/USD";
 
 
     public static HashMap<String, Currency> retrieveRates() {
