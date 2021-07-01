@@ -63,6 +63,7 @@ public class ExchangeRateWebService {
             JOptionPane.showMessageDialog(null,
                     "Problem encountered retrieving data from the web service",
                     "Connection Problem", JOptionPane.WARNING_MESSAGE);
+            System.out.print("API access failed. ");
             return getBackUpRates();
         }
 
@@ -87,7 +88,7 @@ public class ExchangeRateWebService {
         currencies.put("Japanese Yen", new Currency("JPY", 110.8417));
         currencies.put("Chinese Yuan Renminbi", new Currency("CNY", 6.4708));
 
-        System.out.println("Back-up rates populated"); // for performance testing
+        System.out.println("Back-up rates successfully retrieved."); // for performance testing
         
         return currencies;
     }
