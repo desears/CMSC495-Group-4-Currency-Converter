@@ -103,6 +103,8 @@ public class CurrencyGUI extends JFrame {
         // add contentPanel to frame and set visible
         add(contentPanel);
         setVisible(true);
+        
+        System.out.println("GUI successfully loaded");  // for performance testing
     } // end of initComponents
     
     // This method listens for the Convert Button action listener and converts an
@@ -118,6 +120,8 @@ public class CurrencyGUI extends JFrame {
             if(amount < 0)
                 throw new NumberFormatException();
             float result = currencyManager.convert(fromCurrency, toCurrency, amount);
+            
+            System.out.println("Conversion successfully performed");  // for performance testing
             
             resultTextField.setText(Float.toString(result));
         } catch(NullPointerException e) {
