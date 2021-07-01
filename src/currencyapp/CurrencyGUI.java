@@ -122,7 +122,6 @@ public class CurrencyGUI extends JFrame {
             float result = currencyManager.convert(fromCurrency, toCurrency, amount);
             
             System.out.println("Conversion successfully performed");  // for performance testing
-            
             resultTextField.setText(Float.toString(result));
         } catch(NullPointerException e) {
             JOptionPane.showMessageDialog(this, "Make sure to enter an amount first!");
