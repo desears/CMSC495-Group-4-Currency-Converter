@@ -18,6 +18,8 @@ public class CurrencyManager {
     // Constructor
     public CurrencyManager() {
         currencies = ExchangeRateWebService.retrieveRates();
+        
+        System.out.println("Rated retrieved");  // for performance testing
     }
     
     // This method converts an amount of currency1 to currency2 sourced from online
@@ -25,13 +27,15 @@ public class CurrencyManager {
     public float convert(String currency1, String currency2, float amount) {
         
         // if both currencies are the same, no conversion required, return amount
-        if(currency1.equals(currency2))
+        if(currency1.equals(currency2)) {
+            System.out.println("Two currency amounts are the same");  // for performance testing
             return amount;
+        }
         
         // if the starting currency is not USD, we need to convert the amount to USD
         // first in order to convert to currency2 since our rates are USD based
         // This is done  by dividing amount/USDRate
-        if(!currency1.equals("US Dollar")) {
+        if (!currency1.equals("US Dollar")) {
             amount /= currencies.get(currency1).getRate();
         }
         
