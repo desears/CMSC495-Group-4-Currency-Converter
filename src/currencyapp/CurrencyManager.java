@@ -18,8 +18,6 @@ public class CurrencyManager {
     // Constructor
     public CurrencyManager() {
         currencies = ExchangeRateWebService.retrieveRates();
-        
-        System.out.println("Rated retrieved");  // for performance testing
     }
     
     // This method converts an amount of currency1 to currency2 sourced from online
