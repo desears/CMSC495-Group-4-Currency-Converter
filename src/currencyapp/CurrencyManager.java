@@ -26,7 +26,6 @@ public class CurrencyManager {
         
         // if both currencies are the same, no conversion required, return amount
         if(currency1.equals(currency2)) {
-            System.out.println("Two currency amounts are the same");  // for performance testing
             return amount;
         }
         

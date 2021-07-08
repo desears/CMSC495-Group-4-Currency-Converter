@@ -56,7 +56,6 @@ public class ExchangeRateWebService {
                 currencies.put("Japanese Yen", new Currency("JPY", (Double) rates.get("JPY")));
                 currencies.put("Chinese Yuan Renminbi", new Currency("CNY", (Double) rates.get("CNY")));
                 
-                System.out.println("Currencies successfully updated from web");  // for performance testing
             }
 
         } catch (IOException | ParseException e) {  // if error, then call back-up rates
@@ -87,8 +86,6 @@ public class ExchangeRateWebService {
         currencies.put("Malaysian Ringgit", new Currency("MYR", 4.1591));
         currencies.put("Japanese Yen", new Currency("JPY", 110.8417));
         currencies.put("Chinese Yuan Renminbi", new Currency("CNY", 6.4708));
-
-        System.out.println("Back-up rates successfully retrieved."); // for performance testing
         
         return currencies;
     }
